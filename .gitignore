@@ -1,0 +1,9 @@
+# Dependencies & OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor & Scratch
+.vscode/
+scratch_split_test.jpg
+create_banner.py

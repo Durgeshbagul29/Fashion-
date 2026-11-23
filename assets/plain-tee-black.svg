@@ -1,0 +1,20 @@
+<svg viewBox="0 0 400 460" width="400" height="460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="teeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="rgba(0,0,0,0.18)"/>
+    </filter>
+    <linearGradient id="teeShadingBlack" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.35"/>
+      <stop offset="18%" stop-color="#fff" stop-opacity="0.10"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0.04"/>
+      <stop offset="82%" stop-color="#000" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.38"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="14" fill="#f8f6f2"/>
+  <path d="M 130,22 C 160,50 240,50 270,22 L 365,65 L 332,150 L 292,135 L 292,435 C 292,445 282,450 270,450 L 130,450 C 118,450 108,445 108,435 L 108,135 L 68,150 L 35,65 Z" fill="#0d0d0d" stroke="rgba(0,0,0,0.5)" stroke-width="2" filter="url(#teeShadow)"/>
+  <path d="M 130,22 C 160,50 240,50 270,22 L 365,65 L 332,150 L 292,135 L 292,435 C 292,445 282,450 270,450 L 130,450 C 118,450 108,445 108,435 L 108,135 L 68,150 L 35,65 Z" fill="url(#teeShadingBlack)"/>
+  <path d="M 130,22 C 160,50 240,50 270,22 C 248,38 152,38 130,22 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/>
+  <path d="M 292,135 C 285,100 280,68 270,22" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/>
+  <path d="M 108,135 C 115,100 120,68 130,22" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/>
+</svg>

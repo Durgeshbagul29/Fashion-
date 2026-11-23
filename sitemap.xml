@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://www.example.com/</loc></url>
+<url><loc>https://www.example.com/shop.html</loc></url>
+<url><loc>https://www.example.com/studio.html</loc></url>
+<url><loc>https://www.example.com/shop.html?c=men</loc></url>
+<url><loc>https://www.example.com/shop.html?c=women</loc></url>
+<url><loc>https://www.example.com/shop.html?c=hoodies</loc></url>
+<url><loc>https://www.example.com/shop.html?c=kurtis</loc></url>
+<url><loc>https://www.example.com/product.html?id=men-oversized-black-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=men-regular-white-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=men-printed-graphic-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=men-plain-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=men-premium-hoodie</loc></url>
+<url><loc>https://www.example.com/product.html?id=unisex-oversized-hoodie</loc></url>
+<url><loc>https://www.example.com/product.html?id=women-oversized-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=women-fitted-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=women-short-kurti-printed</loc></url>
+<url><loc>https://www.example.com/product.html?id=women-short-kurti-casual</loc></url>
+<url><loc>https://www.example.com/product.html?id=women-short-kurti-cotton</loc></url>
+<url><loc>https://www.example.com/product.html?id=custom-personalised-tee</loc></url>
+<url><loc>https://www.example.com/product.html?id=print</loc></url>
+<url><loc>https://www.example.com/product.html?id=fa</loc></url>
+</urlset>

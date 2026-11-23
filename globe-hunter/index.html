@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abracadabra Globe Hunter – Discover Fashion &amp; Unlock Rewards</title>
+  <meta name="description" content="Spin the 3D Earth, guess the destination country, and unlock exclusive Abracadabra Fashion discount rewards up to 20% OFF!">
+  <link rel="canonical" href="https://www.example.com/globe-hunter/">
+  <meta property="og:title" content="Abracadabra Globe Hunter – Discover Fashion &amp; Unlock Rewards">
+  <meta property="og:description" content="Play Globe Hunter on Abracadabra Fashion. Spin the world, discover unique style aesthetics, and win coupon rewards.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W6MGT7J9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/globe-animations.css">
+  <link rel="stylesheet" href="css/globe-hunter.css">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body data-p="globe">
+
+  <!-- Active Reward Banner -->
+  <div id="gh-active-reward-banner" class="gh-active-banner state-default">
+    <div class="gh-active-banner-content">
+      <span>🌍 Play Globe Hunter to unlock exclusive fashion rewards up to <b>20% OFF</b>!</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- Game Hero Header -->
+    <section class="gh-hero">
+      <div class="gh-badge-top">
+        <span>✨</span> Interactive Fashion Challenge
+      </div>
+      <h1 class="gh-title">GLOBE HUNTER</h1>
+      <div class="gh-subtitle">Spin the World. Discover Your Style.</div>
+      <p class="gh-desc">
+        Embark on a global style expedition. Predict where the rotating world lands or explore international coordinates to unlock <b>20% OFF</b> on premium cotton streetwear, kurtis, and hoodies.
+      </p>
+    </section>
+
+    <!-- Main Game Section (Two-Column Layout) -->
+    <section class="gh-game-wrap">
+      <!-- Left Control Panel -->
+      <aside class="gh-panel">
+        <h3><span>🎮</span> Game Modes</h3>
+
+        <!-- Mode Switcher Tabs -->
+        <div class="gh-mode-tabs">
+          <button id="gh-mode-lucky" class="gh-mode-tab active" type="button">
+            <span>🎲</span> Lucky Spin
+          </button>
+          <button id="gh-mode-explore" class="gh-mode-tab" type="button">
+            <span>🧭</span> Explore &amp; Spin
+          </button>
+        </div>
+
+        <!-- Step 1: Destination Selection -->
+        <h3><span>🎯</span> Step 1: Guessed Country</h3>
+        <p style="font-size: 0.86rem; color: var(--gh-text); margin-top: -6px; margin-bottom: 12px;">
+          Type or select the country you predict the globe will point to:
+        </p>
+
+        <div class="gh-search-box">
+          <div class="gh-input-wrap">
+            <span style="color: var(--gh-primary); font-size: 1.1rem;">🔍</span>
+            <input type="text" id="gh-country-input" class="gh-input" placeholder="Search country (e.g. India, Japan, France, USA)..." autocomplete="off">
+          </div>
+          <div id="gh-country-dropdown" class="gh-dropdown"></div>
+        </div>
+
+        <!-- Selected Badge Pill -->
+        <div id="gh-selected-badge" class="gh-selected-badge"></div>
+
+        <!-- Step 2: Controls & Actions -->
+        <h3><span>⚡</span> Step 2: Take Your Shot</h3>
+
+        <!-- Lucky Spin Controls -->
+        <div id="gh-controls-lucky" class="gh-btn-group">
+          <button id="gh-btn-spin" class="gh-btn-primary" disabled type="button">
+            <span>🌀</span> SPIN THE GLOBE
+          </button>
+          <button id="gh-btn-stop" class="gh-btn-danger" style="display: none;" type="button">
+            <span>🛑</span> STOP
+          </button>
+        </div>
+
+        <!-- Explore Controls -->
+        <div id="gh-controls-explore" class="gh-btn-group" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--gh-text); margin-bottom: 6px;">
+            Drag and rotate the 3D Earth to position your chosen country under the center pin, then lock location:
+          </p>
+          <button id="gh-btn-lock" class="gh-btn-primary" disabled type="button">
+            <span>📍</span> LOCK LOCATION
+          </button>
+        </div>
+
+        <!-- How To Play Info -->
+        <div class="gh-rules-card">
+          <h4>Reward Rules</h4>
+          <div class="gh-rule-item">
+            <span>01.</span>
+            <div><b>Exact Match (Win):</b> Guessed country matches selected location = <b>20% OFF</b> Grand Champion Coupon (Min order ₹999).</div>
+          </div>
+          <div class="gh-rule-item">
+            <span>02.</span>
+            <div><b>Mismatch (No Match):</b> Better luck next time! Try another spin to earn the discount.</div>
+          </div>
+          <div class="gh-rule-item">
+            <span>03.</span>
+            <div><b>Ocean Coordinates:</b> If you land in open waters, simply pan to land to lock in your guess.</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right 3D Globe Stage -->
+      <section class="gh-globe-stage">
+        <div id="gh-globe-container"></div>
+        <!-- Natural clean HUD coordinates showing active pin location -->
+        <div class="gh-hud-coords-badge" id="gh-hud-coords">📍 <b>🇮🇳 India</b> (20.6° N, 78.9° E)</div>
+        <div class="gh-hud-hint">Drag or Click to Pin Location • Scroll to Zoom</div>
+      </section>
+    </section>
+
+    <!-- 1. WINNING DIALOG (Clean White Theme, NO X close icon) -->
+    <div id="gh-win-modal" class="gh-modal-overlay">
+      <div class="gh-modal-card">
+        <span class="gh-status-badge win">MATCH CONFIRMED</span>
+        <h2 class="gh-res-title">CONGRATULATIONS!</h2>
+        <p style="color: var(--gh-text); margin: -8px 0 20px; font-size: 0.95rem;">
+          You successfully found your country!
+        </p>
+
+        <div class="gh-res-comparison">
+          <div class="gh-comp-box">
+            <span class="gh-comp-label">Your Guess</span>
+            <div id="gh-win-guess" class="gh-comp-val">🇮🇳 India</div>
+          </div>
+          <div class="gh-comp-box">
+            <span class="gh-comp-label">Actual Country</span>
+            <div id="gh-win-landed" class="gh-comp-val">🇮🇳 India</div>
+          </div>
+        </div>
+
+        <!-- Verified Winning Reward Box -->
+        <div class="gh-reward-box">
+          <span class="gh-reward-box-label">YOU UNLOCKED 20% OFF</span>
+          <div id="gh-win-code" class="gh-res-code">GLOBE20-XXXX</div>
+          <div class="gh-res-discount">20% DISCOUNT UNLOCKED</div>
+          <p class="gh-res-desc">
+            Valid on all orders above <b id="gh-win-minorder">₹999</b>. Expiration: 48 Hours.
+          </p>
+
+          <div class="gh-reward-actions">
+            <button id="gh-copy-code-btn" class="btn" style="background:#FFFFFF; border:1px solid var(--gh-border); color:var(--gh-heading);">
+              Copy Coupon
+            </button>
+            <button id="gh-apply-cart-btn" class="btn gh-btn-primary">
+              SHOP COLLECTION &amp; VIEW BAG →
+            </button>
+          </div>
+        </div>
+
+        <!-- Curated Product Recommendations -->
+        <div class="gh-rec-section">
+          <h4>🌍 Featured Country Style Inspirations</h4>
+          <div id="gh-win-rec-grid" class="gh-rec-grid"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px;">
+          <button id="gh-win-play-again" class="btn ghost">
+            🔄 Play Another Round
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. LOSING DIALOG (Clean White Theme, NO X close icon, NO discount) -->
+    <div id="gh-lose-modal" class="gh-modal-overlay">
+      <div class="gh-modal-card">
+        <span class="gh-status-badge lose">NO MATCH</span>
+        <h2 class="gh-res-title">BETTER LUCK NEXT TIME!</h2>
+        <p style="color: var(--gh-text); margin: -8px 0 20px; font-size: 0.95rem;">
+          Your guessed country and selected country don't match.
+        </p>
+
+        <div class="gh-res-comparison">
+          <div class="gh-comp-box">
+            <span class="gh-comp-label">Your Guess</span>
+            <div id="gh-lose-guess" class="gh-comp-val">🇯🇵 Japan</div>
+          </div>
+          <div class="gh-comp-box">
+            <span class="gh-comp-label">Selected Location</span>
+            <div id="gh-lose-landed" class="gh-comp-val">🇮🇳 India</div>
+          </div>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid var(--gh-border); border-radius: 14px; padding: 18px; text-align: center; margin-bottom: 22px;">
+          <p style="color: var(--gh-heading); font-weight: 600; margin: 0 0 6px;">Keep exploring to unlock your 20% reward!</p>
+          <p style="color: var(--gh-text); font-size: 0.88rem; margin: 0;">Try another round of Lucky Spin or drag the 3D globe in Explore mode to find your target.</p>
+        </div>
+
+        <div class="gh-reward-actions" style="margin-bottom: 20px;">
+          <button id="gh-lose-try-again" class="btn gh-btn-primary">
+            🔄 TRY AGAIN
+          </button>
+          <a href="../shop.html" class="btn" style="background:#FFFFFF; border:1px solid var(--gh-border); color:var(--gh-heading);">
+            🛍️ EXPLORE COLLECTIONS
+          </a>
+        </div>
+
+        <!-- Curated Product Recommendations -->
+        <div class="gh-rec-section">
+          <h4>🌍 Trending Styles</h4>
+          <div id="gh-lose-rec-grid" class="gh-rec-grid"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Core Scripts -->
+  <script src="../js/three.min.js"></script>
+  <script src="../js/products.js"></script>
+  
+  <!-- Globe Hunter Subsystem Scripts -->
+  <script src="js/country-data.js"></script>
+  <script src="js/country-detection.js"></script>
+  <script src="js/reward-engine.js"></script>
+  <script src="js/product-integration.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/globe-init.js"></script>
+  <script src="js/globe-controls.js"></script>
+  <script src="js/game-engine.js"></script>
+
+  <!-- Parent App Script for Nav Header/Footer layout & Cart binding -->
+  <script src="../js/app.js"></script>
+
+  <!-- Initialize Globe & Game Engine on DOM Ready -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Three.js 3D Geographical Globe
+      const globeContainer = document.getElementById('gh-globe-container');
+      if (globeContainer && window.GH_GLOBE) {
+        window.GH_GLOBE.init(globeContainer);
+      }
+
+      // 2. Initialize Interactive Drag/Zoom Controls
+      if (globeContainer && window.GH_CONTROLS) {
+        window.GH_CONTROLS.init(globeContainer);
+      }
+
+      // 3. Initialize Game Engine
+      if (window.GH_ENGINE) {
+        window.GH_ENGINE.init();
+      }
+    });
+  </script>
+</body>
+</html>

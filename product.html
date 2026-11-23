@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W6MGT7J9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product | AbracaDabra Fashion</title><meta name="description" content="Buy premium fashion online from AbracaDabra Fashion."><link rel="canonical" href="https://www.example.com/product.html"><meta property="og:title" content="Product | AbracaDabra Fashion"><meta property="og:description" content="Buy premium fashion online from AbracaDabra Fashion."><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body data-p="pdp">
+<main class="wrap">
+  <nav class="crumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="pt"></span></nav>
+  <div class="pdp">
+    <div class="gal" id="gal"></div>
+    <div class="pdp-details-col">
+      <!-- 1. Product Name -->
+      <h1 id="pn" style="font-size:clamp(24px, 3.2vw, 36px); margin-bottom: 6px; line-height: 1.25"></h1>
+
+      <!-- 2. Customer rating and review count (when available) -->
+      <div id="prating"></div>
+
+      <!-- 3. Product price and MRP -->
+      <div id="pp" class="pdp-price-wrap"></div>
+
+      <!-- 4. Product description with Ideal For and Open/Closed function (closed by default) -->
+      <div class="pdp-desc-accordion" id="pdesc-accordion">
+        <button class="pdp-desc-toggle-btn" type="button" id="pdesc-toggle" aria-expanded="false">
+          <span class="pdp-desc-toggle-title">Product Description &amp; Details</span>
+          <span class="pdp-desc-toggle-icon">+</span>
+        </button>
+        <div class="pdp-desc-content" id="pdesc-content">
+          <div id="pdesc" class="pdp-desc-text"></div>
+          <div id="pideal-wrap" class="pdp-ideal-badge" style="display:none">
+            <span class="pdp-ideal-icon">👤</span>
+            <strong>Ideal For:</strong>
+            <span id="pideal-val"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Colour selection -->
+      <div class="pdp-opt-group" id="co-wrap">
+        <h4>Colour: <span id="co-name" style="font-weight:600;color:var(--k)"></span></h4>
+        <div class="opt pdp-color-swatches-wrap" id="co"></div>
+      </div>
+
+      <!-- 6. Size selection -->
+      <div class="pdp-opt-group" id="sz-wrap">
+        <h4>Size</h4>
+        <div class="opt" id="sz"></div>
+      </div>
+
+      <!-- 7. Quantity & Add to Cart / Buy Now / Wishlist -->
+      <div class="pdp-action-wrap">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <label for="qty" style="font-weight:600;font-size:13px">Quantity:</label>
+          <input id="qty" type="number" min="1" value="1" style="width:75px;padding:8px 10px;border:1px solid #ccc;border-radius:4px;font-size:14px" aria-label="Quantity">
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn addb" type="button" style="flex:1;min-width:140px">ADD TO BAG</button>
+          <button class="btn gold buyb" type="button" style="flex:1;min-width:140px">BUY NOW</button>
+          <button class="btn ghost" id="wlb" type="button" aria-label="Add to Wishlist" style="padding:12px 18px">♥ WISHLIST</button>
+        </div>
+        <p style="color:#2e7d32;font-weight:600;font-size:13px;margin-top:14px;display:flex;align-items:center;gap:6px">
+          <span>●</span> In stock &bull; Dispatches in <span id="pdispatch">24-48 hrs</span>
+        </p>
+      </div>
+
+      <!-- 8. Product Specifications with Open/Closed function (closed by default) -->
+      <div class="pdp-specs-accordion" id="pspecs-accordion">
+        <button class="pdp-specs-toggle-btn" type="button" id="pspecs-toggle" aria-expanded="false">
+          <span class="pdp-specs-toggle-title">Product Specifications</span>
+          <span class="pdp-specs-toggle-icon">+</span>
+        </button>
+        <div class="pdp-specs-content" id="pspecs-content">
+          <div id="pspecs" class="pdp-specs-box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec pdp-reviews-sec" id="reviews">
+    <div class="reviews-header-wrap">
+      <div><span class="eyebrow">Customer Feedback</span><h2>RATINGS &amp; REVIEWS</h2></div>
+      <div class="rating-summary-box"></div>
+    </div>
+    <div id="pdp-reviews-list"></div>
+  </section>
+
+  <!-- 9. Related Products -->
+  <section class="sec"><h2>You may also like</h2><div class="grid" id="rel"></div></section>
+</main>
+<div class="sticky"><button class="btn addb">ADD TO BAG</button></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script></body></html>

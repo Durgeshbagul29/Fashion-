@@ -1,0 +1,35 @@
+/**
+ * Globe Hunter - Keyframe Animations & Micro-interactions
+ */
+@keyframes ghPulseGlow {
+  0% { box-shadow: 0 0 15px rgba(20, 184, 166, 0.3), inset 0 0 15px rgba(20, 184, 166, 0.2); }
+  50% { box-shadow: 0 0 35px rgba(20, 184, 166, 0.6), inset 0 0 25px rgba(20, 184, 166, 0.4); }
+  100% { box-shadow: 0 0 15px rgba(20, 184, 166, 0.3), inset 0 0 15px rgba(20, 184, 166, 0.2); }
+}
+
+@keyframes ghFloatSlow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes ghOrbitRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ghShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes ghModalFadeIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes ghBeaconPulse {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  70% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
