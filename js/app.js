@@ -2129,11 +2129,10 @@ if(pg=='cart'){
           <div class="inv-party-grid">
             <div class="inv-party-box">
               <div class="inv-party-heading">Sold By / Dispatch Warehouse</div>
-              <div class="inv-party-name">AbracaDabra Software Solutions Pvt. Ltd.</div>
+              <div class="inv-party-name">AbracaDabra Fashion</div>
               <div class="inv-party-text">
-                Apparel Manufacturing &amp; Custom Studio, College Road,<br>
-                Nashik, Maharashtra - 422005, India 🇮🇳<br>
-                <strong>PAN:</strong> AABCA1234F &nbsp;|&nbsp; <strong>GSTIN:</strong> 27AABCA1234F1Z5<br>
+                Apparel Manufacturing &amp; Custom Studio, Ashoka Marg,<br>
+                Nashik, Maharashtra - 422005, India<br>
                 <strong>State/UT Code:</strong> 27 (Maharashtra)<br>
                 <strong>Customer Helpline:</strong> +91 77090 53245 / +91 92842 56635<br>
                 <strong>Support Email:</strong> support@abraca-dabra.com
