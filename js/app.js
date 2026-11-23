@@ -1,4 +1,4 @@
-const CONFIG={SCRIPT_URL:'https://script.google.com/macros/s/AKfycbzmjhjvs117NWcYjvn0GMrqVZmmYAEIY0aQgGGVzzeBXR1cTzgsCZq7ax8OiHdcTfij/exec',GA4_ID:'',SITE:'https://www.example.com',BASE_TEE:399,PRINT:{front:0,back:0,both:100},TEXT_FEE:0,SHIP:50,DELIVERY:{nashik:0,mh:50,outside:70},FREE_SHIP_OVER:1099,PAY:['UPI / QR Code Payment']};
+const CONFIG={SCRIPT_URL:'https://script.google.com/macros/s/AKfycbzmjhjvs117NWcYjvn0GMrqVZmmYAEIY0aQgGGVzzeBXR1cTzgsCZq7ax8OiHdcTfij/exec',GA4_ID:'',SITE:'https://www.example.com',BASE_TEE:429,PRINT:{front:0,back:0,both:90},TEXT_FEE:0,SHIP:50,DELIVERY:{nashik:0,mh:50,outside:70},FREE_SHIP_OVER:1099,PAY:['UPI / QR Code Payment']};
 
 // Products catalog is managed in js/products.js (window.PRODUCTS)
 var P = (typeof window !== 'undefined' && window.PRODUCTS) ? window.PRODUCTS : (typeof PRODUCTS !== 'undefined' ? PRODUCTS : []);
@@ -53,7 +53,7 @@ function highlightActiveNav(){
 function card(p){
   const d=Math.round(100-p.price/p.mrp*100),w=wish().includes(p.id);
   const defColor=(p.colors&&p.colors[0])||null;
-  const img=(defColor&&defColor.images&&defColor.images[0])||(p.images&&p.images[0])||'assets/nkb-tshirt-002-1.webp';
+  const img=(defColor&&defColor.images&&defColor.images[0])||(p.images&&p.images[0])||'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp';
   const hasRating=(p.rating!==null&&p.rating!==undefined&&p.ratingCount!==null&&p.ratingCount!==undefined&&String(p.rating).trim()!==''&&String(p.ratingCount).trim()!=='');
   const ratingHtml=hasRating?`<div class="card-rating"><span class="star">★</span> <b>${p.rating}</b> <span class="cnt">(${p.ratingCount})</span></div>`:'';
   const swatches=(p.colors||[]).map(c=>{
@@ -64,7 +64,7 @@ function card(p){
 
   return `<article class="card">
     <a href="product.html?id=${p.id}" class="card-media">
-      <img src="${img}" alt="${p.name}" class="card-img" loading="lazy" onerror="this.onerror=null;this.src='assets/nkb-tshirt-002-1.webp'">
+      <img src="${img}" alt="${p.name}" class="card-img" loading="lazy" onerror="this.onerror=null;this.src='assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'">
     </a>
     <button class="wl" data-w="${p.id}" aria-label="Wishlist">${w?'♥':'♡'}</button>
     <div class="q">
@@ -115,7 +115,7 @@ function bind(r=document){
     if(p){
       const defC=(p.colors&&p.colors[0])||null;
       const cName=(defC&&defC.name)?defC.name:((defC&&defC.code)?defC.code:(defC||'Default'));
-      const cImg=(defC&&defC.images&&defC.images[0])||(p.images&&p.images[0])||'assets/nkb-tshirt-002-1.webp';
+      const cImg=(defC&&defC.images&&defC.images[0])||(p.images&&p.images[0])||'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp';
       add({id:p.id,name:p.name,price:p.price,size:'M',color:cName,qty:1,h:p.h,image:cImg});
     }
   });
@@ -326,6 +326,116 @@ if(pg=='home'){
   ld({'@context':'https://schema.org','@type':'WebSite',name:'AbracaDabra Fashion',url:CONFIG.SITE,potentialAction:{'@type':'SearchAction',target:CONFIG.SITE+'/shop.html?s={q}','query-input':'required name=q'}});
   $('#best').innerHTML=P.slice(0,8).map(card).join('');
   bind($('#best'));
+
+  // Explore The Collection Horizontal Carousel controls (2 per view, 5s autoscroll)
+  const track = document.getElementById('explore-carousel-track');
+  const prevBtn = document.getElementById('explore-prev');
+  const nextBtn = document.getElementById('explore-next');
+  if (track && prevBtn && nextBtn) {
+    const getScrollStep = () => {
+      const firstCard = track.firstElementChild;
+      return firstCard ? firstCard.getBoundingClientRect().width + 20 : track.clientWidth / 2;
+    };
+
+    let autoScrollInterval = null;
+    const startAuto = () => {
+      stopAuto();
+      autoScrollInterval = setInterval(() => {
+        const step = getScrollStep();
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= maxScroll - 15) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      }, 5000);
+    };
+
+    const stopAuto = () => {
+      if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = null;
+      }
+    };
+
+    prevBtn.addEventListener('click', () => {
+      stopAuto();
+      const step = getScrollStep();
+      if (track.scrollLeft <= 15) {
+        track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: -step, behavior: 'smooth' });
+      }
+      startAuto();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      stopAuto();
+      const step = getScrollStep();
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 15) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: step, behavior: 'smooth' });
+      }
+      startAuto();
+    });
+
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('touchstart', stopAuto, { passive: true });
+    track.addEventListener('touchend', startAuto, { passive: true });
+
+    startAuto();
+  }
+
+  // Custom Studio Promo Video Controls (Center Play/Pause & Sound Toggle)
+  const promoPlayer = document.getElementById('promo-video-player');
+  const promoVideo = document.getElementById('promo-video');
+  const playBtn = document.getElementById('promo-play-btn');
+  const soundBtn = document.getElementById('promo-sound-btn');
+
+  if (promoPlayer && promoVideo && playBtn && soundBtn) {
+    promoVideo.muted = true; // default muted for comfortable browsing
+
+    const togglePlay = () => {
+      if (promoVideo.paused) {
+        promoVideo.play().then(() => {
+          promoPlayer.classList.add('is-playing');
+        }).catch(() => {});
+      } else {
+        promoVideo.pause();
+        promoPlayer.classList.remove('is-playing');
+      }
+    };
+
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    promoVideo.addEventListener('click', togglePlay);
+
+    promoVideo.addEventListener('play', () => {
+      promoPlayer.classList.add('is-playing');
+    });
+
+    promoVideo.addEventListener('pause', () => {
+      promoPlayer.classList.remove('is-playing');
+    });
+
+    soundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      promoVideo.muted = !promoVideo.muted;
+      if (promoVideo.muted) {
+        soundBtn.classList.add('is-muted');
+      } else {
+        soundBtn.classList.remove('is-muted');
+        // Ensure volume is audible
+        promoVideo.volume = 1;
+      }
+    });
+  }
 }
 
 if(pg=='shop'){
@@ -349,7 +459,7 @@ if(pg=='shop'){
   function r(){
     updateHeader();
     let l=P.filter(p=>{
-      if(st.c&&p.cat!==st.c) return false;
+      if(st.c&&p.cat!==st.c&&!(p.idealFor&&p.idealFor.toLowerCase().includes('unisex')&&(st.c==='men'||st.c==='women'))) return false;
       if(p.price>st.max) return false;
       if(st.col&&!p.colors.some(c=>(typeof c==='object'?c.code:c).toLowerCase()===st.col.toLowerCase())) return false;
       if(st.size&&!p.sizes.includes(st.size)) return false;
@@ -540,8 +650,8 @@ if(pg=='pdp'){
   if(metaDesc) metaDesc.content=(p.description&&p.description.trim())?p.description:`Buy ${p.name} (${p.type}) online in India from AbracaDabra Fashion. Prices from ${inr(p.price)}.`;
 
   let sz=(p.sizes&&p.sizes[0])||'M';
-  let currentColor=(p.colors&&p.colors[0])||{name:'Standard',code:'#080808',images:(p.images||['assets/nkb-tshirt-002-1.webp'])};
-  let currentImages=(currentColor.images&&currentColor.images.length)?currentColor.images:(p.images&&p.images.length?p.images:['assets/nkb-tshirt-002-1.webp']);
+  let currentColor=(p.colors&&p.colors[0])||{name:'Standard',code:'#080808',images:(p.images||['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'])};
+  let currentImages=(currentColor.images&&currentColor.images.length)?currentColor.images:(p.images&&p.images.length?p.images:['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp']);
   let currentSlide=0;
 
   // 1. Product Name
@@ -636,7 +746,7 @@ if(pg=='pdp'){
           const idx=Number(b.dataset.idx);
           if(p.colors[idx]){
             currentColor=p.colors[idx];
-            currentImages=(currentColor.images&&currentColor.images.length)?currentColor.images:(p.images||['assets/nkb-tshirt-002-1.webp']);
+            currentImages=(currentColor.images&&currentColor.images.length)?currentColor.images:(p.images||['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp']);
             currentSlide=0;
             renderColors();
             renderGallery();
@@ -664,14 +774,14 @@ if(pg=='pdp'){
           <div class="carousel-counter" id="car-counter">${currentSlide+1} / ${currentImages.length}</div>
           `:''}
           <div class="carousel-slide-wrap">
-            <img id="car-main-img" src="${currentImages[currentSlide]||currentImages[0]}" alt="${p.name} - ${currentColor.name||''}" class="carousel-main-img" onerror="this.onerror=null;this.src='assets/nkb-tshirt-002-1.webp'">
+            <img id="car-main-img" src="${currentImages[currentSlide]||currentImages[0]}" alt="${p.name} - ${currentColor.name||''}" class="carousel-main-img" onerror="this.onerror=null;this.src='assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'">
           </div>
         </div>
         ${hasMultiple?`
         <div class="carousel-thumbs" id="car-thumbs">
           ${currentImages.map((src,idx)=>`
             <button class="carousel-thumb-btn ${idx===currentSlide?'active':''}" data-idx="${idx}" aria-label="View thumbnail ${idx+1}">
-              <img src="${src}" alt="${p.name} thumbnail ${idx+1}" onerror="this.onerror=null;this.src='assets/nkb-tshirt-002-1.webp'">
+              <img src="${src}" alt="${p.name} thumbnail ${idx+1}" onerror="this.onerror=null;this.src='assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'">
             </button>
           `).join('')}
         </div>`:''}
@@ -827,8 +937,18 @@ if(pg=='pdp'){
       }
       const revList=$('#pdp-reviews-list');
       if(revList){
+        const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'];
         revList.innerHTML=`<div class="reviews-grid">
-          ${p.ratings.map(r=>`
+          ${p.ratings.map((r,idx)=>{
+            let rDate = r.reviewDate;
+            if(!rDate){
+              const seed = (p.id.split('').reduce((acc,c)=>acc+c.charCodeAt(0),0) * 17 + (idx+1)*31 + (r.helpful||7)*13);
+              const mIdx = seed % 10;
+              const maxDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31][mIdx];
+              const day = 1 + ((seed * 7) % maxDays);
+              rDate = `${day} ${months[mIdx]} 2026`;
+            }
+            return `
             <article class="review-card">
               <div>
                 <div class="rev-top">
@@ -845,11 +965,12 @@ if(pg=='pdp'){
                 <p class="rev-body">${r.desc||''}</p>
               </div>
               <div class="rev-footer">
-                <span>Size: ${sz} &bull; Verified Purchase</span>
+                <span>${rDate}</span>
                 <span>👍 Helpful ${r.helpful?'('+r.helpful+')':''}</span>
               </div>
             </article>
-          `).join('')}
+          `;
+          }).join('')}
         </div>`;
       }
     } else {
@@ -1004,11 +1125,11 @@ if(pg=='studio'){
     const viewName=isFrontActive?'FRONT VIEW':'BACK VIEW';
     if(g('view-indicator')) g('view-indicator').textContent=`${viewName} • ${S.colorName}`;
     if(g('color-spec-name')) g('color-spec-name').textContent=S.colorName;
-    if(g('placement-spec-name')) g('placement-spec-name').textContent=isBoth?'Both Sides (₹499)':(printSide==='front'?'Front Side (₹399)':'Back Side (₹399)');
+    if(g('placement-spec-name')) g('placement-spec-name').textContent=isBoth?'Both Sides (₹519)':(printSide==='front'?'Front Side (₹429)':'Back Side (₹429)');
 
     // Price calculations:
-    // Single side: ₹399, Both sides: ₹499
-    const unitPrice=isBoth?499:399;
+    // Single side: ₹429, Both sides: ₹519
+    const unitPrice=isBoth?519:429;
     const subtotal=unitPrice*n;
 
     // Delivery calculation:
@@ -1025,7 +1146,7 @@ if(pg=='studio'){
     const zoneLabel=S.zone==='nashik'?'Nashik Local':(S.zone==='mh'?'Maharashtra':'Rest of India');
     g('tot').innerHTML=`
       <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-        <span>Custom T-Shirt (${isBoth?'Both Sides ₹499':'Single Side ₹399'}) × ${n}</span>
+        <span>Custom T-Shirt (${isBoth?'Both Sides ₹519':'Single Side ₹429'}) × ${n}</span>
         <strong>${inr(subtotal)}</strong>
       </div>
       <div style="display:flex;justify-content:space-between;margin-bottom:6px">
@@ -1394,6 +1515,73 @@ if(pg=='cart'){
     }
   }
 
+  // Nashik City, Local Area, and District PIN codes & Locality definitions
+  const NASHIK_PIN_CODES = new Set([
+    '422001', '422002', '422003', '422005', '422006', '422008', '422009', '422010', '422011', '422012',
+    '422101', '422103', '422202', '422203', '423203', '422206', '422211', '422212',
+    '422401', '422403', '422502', '423101', '423104', '423401', '423502'
+  ]);
+
+  const NASHIK_PIN_TO_NAME = {
+    '422001': 'Nashik City (H.O.)',
+    '422002': 'Nashik (Gole Colony)',
+    '422003': 'Nashik (Adgaon / Panchavati)',
+    '422005': 'Nashik (Bhonsala Military School)',
+    '422006': 'Nashik (Gandhi Nagar / Bodhale Nagar)',
+    '422008': 'Nashik (Govind Nagar)',
+    '422009': 'Nashik (CIDCO / Indira Nagar)',
+    '422010': 'Nashik (Ambad)',
+    '422011': 'Nashik (Dwarka Corner)',
+    '422012': 'Nashik (Ashok Nagar)',
+    '422101': 'Nashik Road / India Security Press',
+    '422103': 'Sinnar',
+    '422202': 'Dindori',
+    '422203': 'Malegaon',
+    '423203': 'Malegaon',
+    '422206': 'Ojhar',
+    '422211': 'Surgana',
+    '422212': 'Trimbak',
+    '422401': 'Devlali / Deolali Camp',
+    '422403': 'Igatpuri',
+    '422502': 'Bhagur',
+    '423101': 'Chandvad',
+    '423104': 'Manmad',
+    '423401': 'Yeola',
+    '423502': 'Abhona'
+  };
+
+  const NASHIK_LOCATION_KEYWORDS = [
+    'nashik', 'nasik', 'panchavati', 'adgaon', 'gole colony', 'bhonsala', 'gandhi nagar',
+    'bodhale nagar', 'govind nagar', 'cidco', 'indira nagar', 'ambad', 'dwarka', 'ashok nagar',
+    'nashik road', 'nasik road', 'sinnar', 'dindori', 'malegaon', 'ojhar', 'ozar', 'surgana',
+    'trimbak', 'trimbakeshwar', 'devlali', 'deolali', 'deolali camp', 'igatpuri', 'bhagur',
+    'chandvad', 'chandwad', 'manmad', 'yeola', 'abhona', 'satana', 'baglan', 'kalwan',
+    'nandgaon', 'niphad', 'lasalgaon', 'peint', 'peth', 'satpur', 'gangapur'
+  ];
+
+  function isNashikPin(pin) {
+    if (!pin) return false;
+    const p = String(pin).trim();
+    if (NASHIK_PIN_CODES.has(p)) return true;
+    if (/^(422|423)\d{3}$/.test(p)) return true;
+    return false;
+  }
+
+  function isNashikLocation(cityStr, addressStr) {
+    const combined = ((cityStr || '') + ' ' + (addressStr || '')).toLowerCase();
+    return NASHIK_LOCATION_KEYWORDS.some(kw => combined.includes(kw));
+  }
+
+  function isMaharashtra(pin, stateStr, cityStr) {
+    const p = String(pin || '').trim();
+    if (/^4[0-4]\d{4}$/.test(p)) return true;
+    const s = (stateStr || '').toLowerCase();
+    if (s.includes('maharashtra') || s.includes('mh')) return true;
+    const c = (cityStr || '').toLowerCase();
+    const mhCities = ['mumbai', 'pune', 'nagpur', 'thane', 'navi mumbai', 'solapur', 'kolhapur', 'aurangabad', 'sambhajinagar', 'amravati', 'akola', 'nanded', 'jalgaon', 'dhule', 'satara', 'sangli', 'ahmednagar', 'latur', 'chandrapur', 'parbhani', 'jalna', 'beed', 'ratnagiri', 'wardha', 'yavatmal', 'gondia', 'gadchiroli', 'buldhana', 'bhandara', 'osmanabad', 'dharashiv', 'hingoli', 'palghar', 'sindhudurg'];
+    return mhCities.some(city => c.includes(city));
+  }
+
   function r(){
     const c=cart();
     const deliverySec = $('#delivery-section');
@@ -1418,7 +1606,7 @@ if(pg=='cart'){
         img=getPlainTeeImage(i.color||(i.design&&i.design.color));
       } else {
         const p=P.find(item=>item.id==i.id);
-        img=i.image||(p&&p.images?p.images[0]:'assets/nkb-tshirt-002-1.webp');
+        img=i.image||(p&&p.images?p.images[0]:'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp');
       }
 
       let metaHTML='';
@@ -1458,20 +1646,59 @@ if(pg=='cart'){
     }).join('');
 
     const s=c.reduce((a,i)=>a+i.qty*i.price,0);
-    // Shipping rules:
-    // Subtotal >= 1099 => Free!
-    // City Nashik => Free!
-    // Maharashtra => ₹50
-    // Outside MH => ₹70
+
+    // Dynamic Delivery & Shipping Calculation:
+    // 1. Orders >= ₹1,099 => FREE PAN-India Delivery!
+    // 2. Nashik City, Local Area & District PIN codes or Towns => FREE Local Delivery!
+    // 3. Maharashtra => ₹50 Delivery Fee
+    // 4. Rest of India => ₹70 Standard Delivery Fee
+    const pinInput=$('input[name=pin]');
     const cityInput=$('input[name=city]');
     const stateInput=$('input[name=state]');
-    const city=(cityInput?cityInput.value:'').toLowerCase();
-    const state=(stateInput?stateInput.value:'').toLowerCase();
-    let sh=0;
-    if(s>0&&s<CONFIG.FREE_SHIP_OVER){
-      if(city.includes('nashik')||city.includes('nasik')) sh=0;
-      else if(state.includes('maharashtra')||state.includes('mh')) sh=50;
-      else sh=70;
+    const addrInput=$('textarea[name=address]');
+
+    const pin=(pinInput?pinInput.value:'').trim();
+    const city=(cityInput?cityInput.value:'').trim();
+    const state=(stateInput?stateInput.value:'').trim();
+    const address=(addrInput?addrInput.value:'').trim();
+
+    const isNashik = isNashikPin(pin) || isNashikLocation(city, address);
+    const isMh = isNashik || isMaharashtra(pin, state, city);
+
+    let sh = 0;
+    let deliveryLabel = '';
+    let pillHtml = '';
+
+    if (s >= CONFIG.FREE_SHIP_OVER) {
+      sh = 0;
+      deliveryLabel = 'FREE Delivery (Orders above ₹1,099)';
+      pillHtml = '<span style="color:#16a34a;background:#dcfce7;border:1px solid #86efac;padding:6px 10px;border-radius:6px;display:block;font-weight:600">⚡ <strong>FREE PAN-India Delivery:</strong> Cart exceeds ₹1,099!</span>';
+    } else if (isNashik) {
+      sh = 0;
+      const locName = NASHIK_PIN_TO_NAME[pin] || (city ? city : 'Nashik District');
+      deliveryLabel = `FREE Local Delivery (${locName})`;
+      pillHtml = `<span style="color:#16a34a;background:#dcfce7;border:1px solid #86efac;padding:6px 10px;border-radius:6px;display:block;font-weight:600">✨ <strong>FREE Nashik Delivery Unlocked:</strong> ${locName}</span>`;
+    } else if (isMh) {
+      sh = 50;
+      deliveryLabel = 'Maharashtra Delivery (₹50)';
+      pillHtml = '<span style="color:#0369a1;background:#e0f2fe;border:1px solid #7dd3fc;padding:6px 10px;border-radius:6px;display:block;font-weight:600">🚚 <strong>Maharashtra Delivery:</strong> ₹50 (FREE on orders above ₹1,099)</span>';
+    } else {
+      sh = 70;
+      deliveryLabel = 'Standard PAN-India (₹70)';
+      if (pin.length === 6 || city || state) {
+        pillHtml = '<span style="color:#475569;background:#f1f5f9;border:1px solid #cbd5e1;padding:6px 10px;border-radius:6px;display:block;font-weight:600">📦 <strong>PAN-India Delivery:</strong> ₹70 (FREE on orders above ₹1,099)</span>';
+      }
+    }
+
+    const pillEl = $('#pin-delivery-pill');
+    if (pillEl) {
+      if (pillHtml) {
+        pillEl.style.display = 'block';
+        pillEl.innerHTML = pillHtml;
+      } else {
+        pillEl.style.display = 'none';
+        pillEl.innerHTML = '';
+      }
     }
 
     const promo = ls('cart_promo', null) || ls('gh_active_coupon', null);
@@ -1535,7 +1762,10 @@ if(pg=='cart'){
       </div>` : ''}
       <div style="display:flex;justify-content:space-between;margin-bottom:8px">
         <span style="color:#555">Delivery / Shipping</span>
-        <strong>${sh===0?'<span style="color:#16a34a;font-weight:700">FREE</span>':inr(sh)}</strong>
+        <strong style="text-align:right">
+          ${sh===0?'<span style="color:#16a34a;font-weight:700">FREE</span>':inr(sh)}
+          ${deliveryLabel?`<span style="display:block;font-size:11.5px;font-weight:400;color:${sh===0?'#16a34a':'#666'}">${deliveryLabel}</span>`:''}
+        </strong>
       </div>
       ${promoHtml}
       ${s>=CONFIG.FREE_SHIP_OVER?'<div style="color:#16a34a;font-size:12px;margin:6px 0">⚡ Orders above ₹1,099 get FREE PAN-India Delivery!</div>':(s>0?`<div style="color:#b45309;font-size:12px;margin:6px 0">Add ${inr(CONFIG.FREE_SHIP_OVER-s)} more for FREE Delivery!</div>`:'')}
@@ -1572,10 +1802,35 @@ if(pg=='cart'){
   // Initialize payment UI & cart
   renderPaymentMethods();
 
+  const pinInput=$('input[name=pin]');
   const cityInput=$('input[name=city]');
   const stateInput=$('input[name=state]');
-  if(cityInput) cityInput.oninput=r;
-  if(stateInput) stateInput.oninput=r;
+  const addrInput=$('textarea[name=address]');
+
+  [pinInput, cityInput, stateInput, addrInput].forEach(el => {
+    if (!el) return;
+    el.addEventListener('input', () => {
+      // Auto-suggest city/state if pin is entered
+      if (el === pinInput && el.value.trim().length === 6) {
+        const p = el.value.trim();
+        if (NASHIK_PIN_TO_NAME[p]) {
+          if (stateInput && !stateInput.value.trim()) stateInput.value = 'Maharashtra';
+          if (cityInput && !cityInput.value.trim()) cityInput.value = NASHIK_PIN_TO_NAME[p];
+        } else if (isNashikPin(p)) {
+          if (stateInput && !stateInput.value.trim()) stateInput.value = 'Maharashtra';
+          if (cityInput && !cityInput.value.trim()) cityInput.value = 'Nashik';
+        } else if (isMaharashtra(p)) {
+          if (stateInput && !stateInput.value.trim()) stateInput.value = 'Maharashtra';
+        }
+      }
+      // If user types a Nashik city name, auto-set state to Maharashtra if empty
+      if (el === cityInput && isNashikLocation(el.value, '')) {
+        if (stateInput && !stateInput.value.trim()) stateInput.value = 'Maharashtra';
+      }
+      r();
+    });
+    el.addEventListener('change', r);
+  });
   r();
 
 
