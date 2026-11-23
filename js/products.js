@@ -53,14 +53,14 @@ var PRODUCTS = [
       },
       {
         title: 'Peaceful Maharaj-ji vibe and rich heavyweight drape',
-        desc: 'The drop-shoulder fit is stylish and modern. You can feel the 240 GSM quality instantly. Best devotional streetwear tee I have ever bought.',
+        desc: 'The drop-shoulder fit is stylish and modern. You can feel the 200 GSM quality instantly. Best devotional streetwear tee I have ever bought.',
         count: 5.0,
         author: 'Pooja Iyer',
         date: 'Verified Buyer • Bengaluru',
         helpful: 29
       }
     ],
-    description: 'Sacred Neem Karoli Baba artistic tribute t-shirt crafted with high-definition DTF graphic printing on 240 GSM bio-washed combed cotton. Features an effortless unisex drape with reinforced neck ribbing.',
+    description: 'Sacred Neem Karoli Baba artistic tribute t-shirt crafted with high-definition DTF graphic printing on 200 GSM bio-washed combed cotton. Features an effortless unisex drape with reinforced neck ribbing.',
     colors: [
       {
         name: 'Black',
@@ -207,6 +207,7 @@ var PRODUCTS = [
       {
         name: 'Orange',
         code: '#f97316',
+        outOfStock: true,
         images: [
           'assets/tshirts/nkb-tshirt-003/nkb-or-tshirt-003-1.webp',
           'assets/tshirts/nkb-tshirt-003/nkb-or-tshirt-003-2.webp'
@@ -250,7 +251,7 @@ var PRODUCTS = [
         helpful: 38
       },
       {
-        title: 'Superb 240 GSM heavyweight cotton comfort',
+        title: 'Superb 180 GSM heavyweight cotton comfort',
         desc: 'Solid, thick fabric that drapes effortlessly without feeling stiff. Maharaj-ji print is high definition and crack-resistant.',
         count: 4.5,
         author: 'Rohan Kulkarni',
@@ -258,7 +259,7 @@ var PRODUCTS = [
         helpful: 22
       }
     ],
-    description: 'Heavyweight drop-shoulder oversized streetwear t-shirt in rich Navy Blue, emblazoned with iconic Neem Karoli Baba art. Designed with a structured boxy drape and seamless aesthetic feel.',
+    description: 'Heavyweight drop-shoulder oversized streetwear t-shirt available in rich Navy Blue and aesthetic Cream colorways, emblazoned with iconic Neem Karoli Baba art. Designed with a structured boxy drape and seamless aesthetic feel.',
     colors: [
       {
         name: 'Navy Blue',
@@ -267,6 +268,15 @@ var PRODUCTS = [
           'assets/tshirts/nkb-tshirt-004/nkb-nb-tshirt-004-1.webp',
           'assets/tshirts/nkb-tshirt-004/nkb-nb-tshirt-004-2.webp',
           'assets/tshirts/nkb-tshirt-004/nkb-nb-tshirt-004-3.webp'
+        ]
+      },
+      {
+        name: 'Cream',
+        code: '#F8F6F1',
+        outOfStock: true,
+        images: [
+          'assets/tshirts/nkb-tshirt-004/nkb-cream-tshirt-004-4.webp',
+          'assets/tshirts/nkb-tshirt-004/nkb-cream-tshirt-004-5.webp'
         ]
       }
     ],

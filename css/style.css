@@ -3904,6 +3904,70 @@ body[data-p=pdp] .floating-btt {
   transition: all .2s ease;
 }
 
+.pdp-color-swatch-btn.is-oos {
+  border-style: dashed !important;
+  opacity: 0.75;
+}
+
+.pdp-color-swatch-btn.is-oos .pdp-swatch-color {
+  position: relative;
+}
+
+.pdp-color-swatch-btn.is-oos .pdp-swatch-color::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  right: -2px;
+  height: 2px;
+  background: #dc2626;
+  transform: rotate(-45deg);
+}
+
+.pdp-color-swatch-btn.is-oos .pdp-swatch-label small {
+  font-size: 10px;
+  color: #dc2626;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.oos-badge {
+  display: inline-block;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+}
+
+.btn-oos {
+  background: #9ca3af !important;
+  color: #fff !important;
+  cursor: not-allowed !important;
+  border-color: #9ca3af !important;
+  box-shadow: none !important;
+}
+
+.sw i.swatch-oos {
+  opacity: 0.45;
+  position: relative;
+}
+
+.sw i.swatch-oos::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -1px;
+  right: -1px;
+  height: 1.5px;
+  background: #dc2626;
+  transform: rotate(-45deg);
+}
+
 .pdp-color-swatch-btn.on {
   border-color: var(--k) !important;
   background: #f7f5f0 !important;

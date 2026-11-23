@@ -59,7 +59,8 @@ function card(p){
   const swatches=(p.colors||[]).map(c=>{
     const code=(typeof c==='object'&&c.code)?c.code:c;
     const name=(typeof c==='object'&&c.name)?c.name:c;
-    return `<i style="background:${code}" title="${name}"></i>`;
+    const isOOS=(typeof c==='object'&&!!c.outOfStock);
+    return `<i class="${isOOS?'swatch-oos':''}" style="background:${code};border:1px solid ${code.toLowerCase()==='#fff'||code.toLowerCase()==='#ffffff'||code.toLowerCase()==='#f8f6f1'?'#ccc':'transparent'}" title="${name}${isOOS?' (Out of Stock)':''}"></i>`;
   }).join('');
 
   return `<article class="card">
@@ -113,7 +114,7 @@ function bind(r=document){
   $$('[data-a]',r).forEach(b=>b.onclick=()=>{
     const p=P.find(x=>x.id==b.dataset.a);
     if(p){
-      const defC=(p.colors&&p.colors[0])||null;
+      const defC=(p.colors&&p.colors.find(c=>!c.outOfStock))||(p.colors&&p.colors[0])||null;
       const cName=(defC&&defC.name)?defC.name:((defC&&defC.code)?defC.code:(defC||'Default'));
       const cImg=(defC&&defC.images&&defC.images[0])||(p.images&&p.images[0])||'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp';
       add({id:p.id,name:p.name,price:p.price,size:'M',color:cName,qty:1,h:p.h,image:cImg});
@@ -122,6 +123,14 @@ function bind(r=document){
 }
 
 function add(i){
+  const prod=P.find(x=>x.id==i.id);
+  if(prod&&prod.colors){
+    const col=prod.colors.find(c=>(typeof c==='object'?c.name===i.color:c===i.color));
+    if(col&&col.outOfStock){
+      toast('Selected colour is currently out of stock');
+      return;
+    }
+  }
   const c=cart();
   const k=c.find(x=>x.id==i.id&&x.size==i.size&&x.color==i.color&&!i.custom);
   k?k.qty+=i.qty:c.push(i);
@@ -656,7 +665,7 @@ if(pg=='pdp'){
   if(metaDesc) metaDesc.content=(p.description&&p.description.trim())?p.description:`Buy ${p.name} (${p.type}) online in India from AbracaDabra Fashion. Prices from ${inr(p.price)}.`;
 
   let sz=(p.sizes&&p.sizes[0])||'M';
-  let currentColor=(p.colors&&p.colors[0])||{name:'Standard',code:'#080808',images:(p.images||['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'])};
+  let currentColor=(p.colors&&p.colors.find(c=>!c.outOfStock))||(p.colors&&p.colors[0])||{name:'Standard',code:'#080808',images:(p.images||['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp'])};
   let currentImages=(currentColor.images&&currentColor.images.length)?currentColor.images:(p.images&&p.images.length?p.images:['assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp']);
   let currentSlide=0;
 
@@ -724,6 +733,39 @@ if(pg=='pdp'){
   }
 
   // 5. Colour selection
+  function updateStockStatus(){
+    const isOOS=!!(currentColor&&currentColor.outOfStock);
+    const stockP=$('#pdp-stock-msg');
+    if(stockP){
+      if(isOOS){
+        stockP.innerHTML=`<span style="color:#dc2626">●</span> <span style="color:#dc2626;font-weight:700">Currently Out of Stock</span> &bull; Production paused`;
+      } else {
+        const disp=p.h===0?'Instant Production':(p.h<=24?'24 hrs':(p.h<=48?'24–48 hrs':Math.round(p.h/24)+' days'));
+        stockP.innerHTML=`<span>●</span> In stock &bull; Dispatches in <span id="pdispatch">${disp}</span>`;
+      }
+    }
+    $$('.addb').forEach(b=>{
+      if(isOOS){
+        b.disabled=true;
+        b.textContent='OUT OF STOCK';
+        b.classList.add('btn-oos');
+      } else {
+        b.disabled=false;
+        b.textContent='ADD TO BAG';
+        b.classList.remove('btn-oos');
+      }
+    });
+    $$('.buyb').forEach(b=>{
+      if(isOOS){
+        b.disabled=true;
+        b.style.display='none';
+      } else {
+        b.disabled=false;
+        b.style.display='';
+      }
+    });
+  }
+
   function renderColors(){
     const coWrap=$('#co-wrap');
     if(!coWrap) return;
@@ -733,17 +775,19 @@ if(pg=='pdp'){
     }
     coWrap.style.display='';
     const coName=$('#co-name');
-    if(coName) coName.textContent=currentColor.name||(currentColor.code||'');
+    const isOOS=!!(currentColor&&currentColor.outOfStock);
+    if(coName) coName.innerHTML=`${currentColor.name||(currentColor.code||'')}${isOOS?' <span class="oos-badge">Out of Stock</span>':''}`;
 
     const coEl=$('#co');
     if(coEl){
       coEl.innerHTML=p.colors.map((c,idx)=>{
         const code=(typeof c==='object'&&c.code)?c.code:c;
         const name=(typeof c==='object'&&c.name)?c.name:c;
+        const colOOS=(typeof c==='object'&&!!c.outOfStock);
         const isCurrent=(typeof currentColor==='object')?(c.code===currentColor.code&&c.name===currentColor.name):(c===currentColor);
-        return `<button type="button" class="pdp-color-swatch-btn ${isCurrent?'on':''}" data-idx="${idx}" title="${name}" aria-label="Select colour ${name}">
-          <span class="pdp-swatch-color" style="background:${code};border:1px solid ${code.toLowerCase()==='#fff'||code.toLowerCase()==='#ffffff'?'#ccc':'transparent'}"></span>
-          <span class="pdp-swatch-label">${name}</span>
+        return `<button type="button" class="pdp-color-swatch-btn ${isCurrent?'on':''} ${colOOS?'is-oos':''}" data-idx="${idx}" title="${name}${colOOS?' (Out of Stock)':''}" aria-label="Select colour ${name}">
+          <span class="pdp-swatch-color" style="background:${code};border:1px solid ${code.toLowerCase()==='#fff'||code.toLowerCase()==='#ffffff'||code.toLowerCase()==='#f8f6f1'?'#ccc':'transparent'}"></span>
+          <span class="pdp-swatch-label">${name}${colOOS?' <small>(OOS)</small>':''}</span>
         </button>`;
       }).join('');
 
@@ -756,6 +800,7 @@ if(pg=='pdp'){
             currentSlide=0;
             renderColors();
             renderGallery();
+            updateStockStatus();
           }
         };
       });
@@ -822,6 +867,7 @@ if(pg=='pdp'){
 
   renderColors();
   renderGallery();
+  updateStockStatus();
 
   // 6. Size Selection
   const szEl=$('#sz');
