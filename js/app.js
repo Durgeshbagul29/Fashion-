@@ -202,23 +202,27 @@ function layout(){
         <a href="${rootPrefix}index.html" class="footer-brand" aria-label="AbracaDabra Home">
           <img src="${rootPrefix}assets/logo.webp" alt="AbracaDabra Fashion" class="footer-logo">
         </a>
-        <p class="brand-desc">Fashion that speaks. Premium everyday essentials, heavyweight hoodies, short kurtis and custom printing built for your individuality.</p>
+        <p class="brand-desc">Fashion that speaks. Premium everyday essentials, aesthetic streetwear & custom DTF printing built for your individuality.</p>
         <div class="footer-helpline-plain">
           <h5>DIRECT CUSTOMER HELPLINE</h5>
           <p class="helpline-plain-line">Call Support: <a href="tel:+917709053245" class="gold-link">+91 77090 53245</a></p>
           <p class="helpline-plain-line">WhatsApp Chat: <a href="https://wa.me/919284256635" target="_blank" rel="noopener" class="gold-link">+91 92842 56635</a></p>
+          <p class="helpline-plain-line">Official Website: <a href="https://abraca-dabra.com/" target="_blank" rel="noopener" class="gold-link">abraca-dabra.com ↗</a></p>
         </div>
         <div class="social-links">
-          <a href="https://wa.me/919284256635" target="_blank" rel="noopener" aria-label="WhatsApp" class="s-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <a href="https://abraca-dabra.com/" target="_blank" rel="noopener" aria-label="Official Website" class="s-icon" title="Official Website: abraca-dabra.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="s-icon">
+          <a href="https://www.instagram.com/abracadabrafashion/" target="_blank" rel="noopener" aria-label="Instagram" class="s-icon" title="Instagram: @abracadabrafashion">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="s-icon">
+          <a href="https://www.facebook.com/abracadabrafashion/" target="_blank" rel="noopener" aria-label="Facebook" class="s-icon" title="Facebook">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a href="mailto:support@abracadabrafashion.com" aria-label="Email Us" class="s-icon">
+          <a href="https://wa.me/919284256635" target="_blank" rel="noopener" aria-label="WhatsApp" class="s-icon" title="WhatsApp: +91 92842 56635">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </a>
+          <a href="mailto:support@abraca-dabra.com" aria-label="Email Us" class="s-icon" title="Email: support@abraca-dabra.com">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
         </div>
@@ -228,8 +232,6 @@ function layout(){
         <ul class="footer-links">
           <li><a href="shop.html?c=men">Men's Collection</a></li>
           <li><a href="shop.html?c=women">Women's Collection</a></li>
-          <li><a href="shop.html?c=hoodies">Premium Hoodies</a></li>
-          <li><a href="shop.html?c=kurtis">Short Kurtis</a></li>
           <li><a href="studio.html">Custom Design Studio</a></li>
           <li><a href="shop.html?sort=new">New Arrivals</a></li>
           <li><a href="shop.html?sort=best">Most Loved</a></li>
@@ -240,12 +242,12 @@ function layout(){
         <ul class="footer-links">
           <li><a href="cart.html">Shopping Bag &amp; Checkout</a></li>
           <li><a href="shop.html?w=1">Wishlist</a></li>
+          <li><a href="https://abraca-dabra.com/" target="_blank" rel="noopener">Official Website: abraca-dabra.com ↗</a></li>
           <li><a href="#">Track Order Status</a></li>
           <li><a href="#">Shipping &amp; Delivery Policy</a></li>
-          <li><a href="#">Returns, Exchanges &amp; Refunds</a></li>
+          <li><a href="#">Returns &amp; Replacement Policy</a></li>
           <li><a href="#">Size &amp; Fit Guide</a></li>
           <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -260,8 +262,12 @@ function layout(){
             <a href="https://wa.me/919284256635" target="_blank" rel="noopener" class="gold-link">+91 92842 56635</a>
           </p>
           <p class="contact-line">
+            <span class="c-label">Official Website</span>
+            <a href="https://abraca-dabra.com/" target="_blank" rel="noopener" class="gold-link">abraca-dabra.com ↗</a>
+          </p>
+          <p class="contact-line">
             <span class="c-label">Support Email</span>
-            <a href="mailto:support@abracadabrafashion.com">support@abracadabra.com</a>
+            <a href="mailto:support@abraca-dabra.com">support@abraca-dabra.com</a>
           </p>
           <p class="contact-line">
             <span class="c-label">Support Hours</span>
@@ -286,7 +292,7 @@ function layout(){
         <span class="pay-chip">Fast QR Pay</span>
       </div>
       <div class="bottom-copy">
-        <p>© 2026 <a href="https://abraca-dabra.com/" target="_blank" rel="noopener">AbracaDabra Software Solutions Pvt. Ltd.</a> All rights reserved.</p>
+        <p>© 2026 <a href="https://abraca-dabra.com/" target="_blank" rel="noopener">AbracaDabra Software Solutions Pvt. Ltd.</a> • Official Website: <a href="https://abraca-dabra.com/" target="_blank" rel="noopener">abraca-dabra.com</a>. All rights reserved.</p>
       </div>
     </div>
   </div>
@@ -1308,7 +1314,7 @@ if(pg=='studio'){
       if(!back) return toast('Please upload Back Side artwork');
     }
 
-    const previewImg = getPlainTeeImage(S.colorHex);
+    const previewImg = 'assets/custom.webp';
     const placementTitle = S.print==='both'?'Both Sides (Front + Back)':(S.print==='front'?'Front Side Only':'Back Side Only');
 
     const customItem = {
@@ -1322,7 +1328,7 @@ if(pg=='studio'){
       colorName:S.colorName,
       qty:n,
       h:40,
-      image:previewImg,
+      image:'assets/custom.webp',
       design:{
         print:S.print,
         printTitle:placementTitle,
@@ -1355,14 +1361,7 @@ if(pg=='studio'){
 }
 
 function getPlainTeeImage(colorHex){
-  const hex=(colorHex||'').toLowerCase();
-  if(hex.includes('080808')||hex.includes('000000')||hex.includes('black')){
-    return 'assets/plain-tee-black.svg';
-  } else if(hex.includes('132238')||hex.includes('navy')||hex.includes('blue')){
-    return 'assets/plain-tee-navy.svg';
-  } else {
-    return 'assets/plain-tee-white.svg';
-  }
+  return 'assets/custom.webp';
 }
 
 if(pg=='cart'){
@@ -1599,11 +1598,11 @@ if(pg=='cart'){
     if(deliverySec) deliverySec.style.display = 'block';
 
     L.innerHTML=c.map((i,x)=>{
-      const isCustom=!!i.custom||!!i.design||(i.id&&String(i.id).startsWith('custom'));
+      const isCustom=!!i.custom||!!i.design||(i.id&&String(i.id).startsWith('custom'))||(i.name&&i.name.toLowerCase().includes('custom'));
       let img='';
       if(isCustom){
-        // For custom t-shirts, show clean plain t-shirt matching the chosen color
-        img=getPlainTeeImage(i.color||(i.design&&i.design.color));
+        // For custom printed t-shirts, always show assets/custom.webp
+        img=(i.image&&!i.image.includes('plain-tee'))?i.image:'assets/custom.webp';
       } else {
         const p=P.find(item=>item.id==i.id);
         img=i.image||(p&&p.images?p.images[0]:'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp');
@@ -1629,8 +1628,10 @@ if(pg=='cart'){
         `;
       }
 
+      const fallbackImg = isCustom ? 'assets/custom.webp' : 'assets/tshirts/nkb-tshirt-002/nkb-w-tshirt-002-1.webp';
+
       return `<div class="cartrow">
-        <img src="${img}" alt="${i.name}" class="cart-thumb ${isCustom?'custom-plain-thumb':''}" onerror="this.onerror=null;this.src='assets/plain-tee-white.svg'">
+        <img src="${img}" alt="${i.name}" class="cart-thumb ${isCustom?'custom-plain-thumb':''}" onerror="this.onerror=null;this.src='${fallbackImg}'">
         <div>
           <b style="font-size:15px;color:#111">${i.name}</b>
           ${metaHTML}
@@ -2135,7 +2136,7 @@ if(pg=='cart'){
                 <strong>PAN:</strong> AABCA1234F &nbsp;|&nbsp; <strong>GSTIN:</strong> 27AABCA1234F1Z5<br>
                 <strong>State/UT Code:</strong> 27 (Maharashtra)<br>
                 <strong>Customer Helpline:</strong> +91 77090 53245 / +91 92842 56635<br>
-                <strong>Support Email:</strong> support@abracadabrafashion.com
+                <strong>Support Email:</strong> support@abraca-dabra.com
               </div>
             </div>
             <div class="inv-party-box">
