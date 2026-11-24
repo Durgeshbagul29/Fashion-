@@ -506,6 +506,35 @@ body[data-p="globe"] {
   position: relative;
 }
 
+/* Modal Close / Cancel Button */
+.gh-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gh-border);
+  background: #FFFFFF;
+  color: #555555;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.gh-modal-close:hover {
+  background: var(--gh-surface-alt);
+  color: #080808;
+  border-color: #BDB7AB;
+  transform: scale(1.08);
+}
+
 /* Status Badges */
 .gh-status-badge {
   display: inline-block;

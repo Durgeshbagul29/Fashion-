@@ -82,6 +82,20 @@ window.GH_ENGINE = {
     if (winPlayAgain) winPlayAgain.addEventListener('click', () => this.resetGame());
     if (loseTryAgain) loseTryAgain.addEventListener('click', () => this.resetGame());
 
+    // Close modal on click of cancel/close button
+    document.querySelectorAll('.gh-modal-close').forEach(btn => {
+      btn.addEventListener('click', () => this.closeModals());
+    });
+
+    // Close modal when clicking outside on the backdrop overlay
+    document.querySelectorAll('.gh-modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          this.closeModals();
+        }
+      });
+    });
+
     // Accessible Dismissal using Escape Key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -366,6 +380,17 @@ window.GH_ENGINE = {
     const loseModal = document.getElementById('gh-lose-modal');
     if (winModal) winModal.classList.remove('open');
     if (loseModal) loseModal.classList.remove('open');
+
+    const spinBtn = document.getElementById('gh-btn-spin');
+    const stopBtn = document.getElementById('gh-btn-stop');
+    if (spinBtn) {
+      spinBtn.style.display = 'inline-flex';
+      spinBtn.disabled = !this.state.guessCountry;
+    }
+    if (stopBtn) {
+      stopBtn.style.display = 'none';
+    }
+    this.state.isPlaying = false;
   },
 
   renderRecommendations(country, containerId) {
