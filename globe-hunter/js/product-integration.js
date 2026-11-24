@@ -75,8 +75,8 @@ window.GH_PRODUCTS = {
     const mrpVal = '₹' + Number(p.mrp).toLocaleString('en-IN');
 
     return `
-      <article class="card gh-rec-card" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.03)">
-        <a href="../product.html?id=${p.id}" class="card-media" style="display:block;border-radius:8px;overflow:hidden;background:#F8FAFC;aspect-ratio:3/4;margin-bottom:8px">
+      <article class="card gh-rec-card" style="background:#FFFFFF;border:1px solid #E8E2D4;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.03)">
+        <a href="../product.html?id=${p.id}" class="card-media" style="display:block;border-radius:8px;overflow:hidden;background:#F8F6F1;aspect-ratio:3/4;margin-bottom:8px">
           <img src="${rawImg}" alt="${p.name}" class="card-img" loading="lazy" style="width:100%;height:100%;object-fit:cover">
         </a>
         <h3 style="font-size:0.86rem;font-weight:600;color:#172033;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${p.name}">${p.name}</h3>
@@ -87,7 +87,7 @@ window.GH_PRODUCTS = {
           <em style="color:#059669;font-size:0.72rem;font-style:normal;font-weight:700">${d}% OFF</em>
         </div>
         <div style="display:flex;gap:6px">
-          <a class="btn" href="../product.html?id=${p.id}" style="flex:1;padding:6px;font-size:0.74rem;background:#F1F5F9;color:#172033;border:1px solid #CBD5E1;border-radius:6px;font-weight:600;text-align:center">VIEW</a>
+          <a class="btn" href="../product.html?id=${p.id}" style="flex:1;padding:6px;font-size:0.74rem;background:#F8F6F1;color:#172033;border:1px solid #E8E2D4;border-radius:6px;font-weight:600;text-align:center">VIEW</a>
           <button class="btn" data-a="${p.id}" style="flex:1;padding:6px;font-size:0.74rem;background:#0F766E;color:#FFFFFF;border:none;border-radius:6px;font-weight:600;cursor:pointer">ADD</button>
         </div>
       </article>

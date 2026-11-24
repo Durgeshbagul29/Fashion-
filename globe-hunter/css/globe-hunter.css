@@ -1,30 +1,25 @@
 /**
- * Abracadabra Globe Hunter - Premium Light Theme Design System
+ * Abracadabra Globe Hunter - Design System (Consistent with Site Theme)
  * Palette:
- * Main background: #F8FAFC
+ * Main background: #FFFFFF (var(--w))
+ * Section background: #F8F6F1 (var(--iv))
  * Card background: #FFFFFF
- * Primary colour:  #0F766E
- * Secondary:       #14B8A6
- * Heading:         #172033
- * Body text:       #64748B
- * Border:          #E2E8F0
- * Gold accent:     #D6A84F
- * Light section:   #F1F5F9
+ * Border:          #E8E2D4
  */
 
 :root {
-  --gh-bg: #F8FAFC;
+  --gh-bg: #FFFFFF;
   --gh-surface: #FFFFFF;
-  --gh-surface-alt: #F1F5F9;
-  --gh-border: #E2E8F0;
-  --gh-border-focus: #14B8A6;
+  --gh-surface-alt: #F8F6F1;
+  --gh-border: #E8E2D4;
+  --gh-border-focus: #C69A3A;
   --gh-primary: #0F766E;
   --gh-primary-hover: #115E59;
   --gh-accent: #14B8A6;
   --gh-secondary: #059669;
   --gh-heading: #172033;
   --gh-text: #64748B;
-  --gh-gold: #D6A84F;
+  --gh-gold: #C69A3A;
   --gh-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -2px rgba(0, 0, 0, 0.02);
   --gh-shadow-hover: 0 20px 35px -5px rgba(15, 118, 110, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
 }
@@ -41,7 +36,7 @@ body[data-p="globe"] {
   padding: 48px 20px 24px;
   text-align: center;
   position: relative;
-  background: linear-gradient(180deg, #F1F5F9 0%, #F8FAFC 100%);
+  background: linear-gradient(180deg, #F8F6F1 0%, #FFFFFF 100%);
   border-bottom: 1px solid var(--gh-border);
 }
 
@@ -268,7 +263,7 @@ body[data-p="globe"] {
   padding: 10px 14px;
   cursor: pointer;
   transition: background 0.15s ease;
-  border-bottom: 1px solid #F1F5F9;
+  border-bottom: 1px solid #F8F6F1;
 }
 
 .gh-dropdown-item:hover {
@@ -423,7 +418,7 @@ body[data-p="globe"] {
 /* Right 3D Earth Stage - Clean Light Container */
 .gh-globe-stage {
   position: relative;
-  background: #F8FAFC;
+  background: #F8F6F1;
   border: 1px solid var(--gh-border);
   border-radius: 20px;
   min-height: 520px;
