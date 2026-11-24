@@ -39,13 +39,18 @@ window.toggleNav = function(open){
 };
 
 function highlightActiveNav(){
+  const isGlobe = location.pathname.includes('globe-hunter');
   const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const search = location.search.toLowerCase();
   const full = path + search;
   $$('.nav-links a, .drawer-links a').forEach(a=>{
     const href = (a.getAttribute('href')||'').toLowerCase();
-    if(href === full || (full === 'index.html' && (href === 'index.html' || href === './'))){
-      a.classList.add('active');
+    if(isGlobe){
+      if(href === './' || href.includes('globe-hunter')) a.classList.add('active');
+    } else {
+      if(href === full || (full === 'index.html' && (href === 'index.html' || href === './'))){
+        a.classList.add('active');
+      }
     }
   });
 }
@@ -164,7 +169,7 @@ function layout(){
         <li><a href="${rootPrefix}studio.html">Custom Studio</a></li>
         <li><a href="${rootPrefix}shop.html?sort=new">New Arrivals</a></li>
         <li><a href="${rootPrefix}shop.html?w=1" class="nav-wish-link">Wishlist <span class="nav-wish-badge wish-count">0</span></a></li>
-        <!-- <li><a href="${globeHref}">Globe Hunter</a></li> -->
+        <li><a href="${globeHref}">Globe Hunter</a></li>
       </ul>
     </nav>
     <div class="nav-right">
@@ -195,7 +200,7 @@ function layout(){
       <li><a href="${rootPrefix}studio.html" onclick="toggleNav(false)"><span class="d-icon">🎨</span> Custom Studio</a></li>
       <li><a href="${rootPrefix}shop.html?sort=new" onclick="toggleNav(false)"><span class="d-icon">✨</span> New Arrivals</a></li>
       <li><a href="${rootPrefix}shop.html?w=1" onclick="toggleNav(false)"><span class="d-icon">♥</span> Wishlist (<span class="wish-count">0</span>)</a></li>
-      <!-- <li><a href="${globeHref}" onclick="toggleNav(false)"><span class="d-icon">🌍</span> Globe Hunter</a></li> -->
+      <li><a href="${globeHref}" onclick="toggleNav(false)"><span class="d-icon">🌍</span> Globe Hunter</a></li>
       <li><a href="${rootPrefix}cart.html" class="drawer-bag-highlight" onclick="toggleNav(false)"><span class="d-icon">👜</span> Bag (<span class="cart-count">0</span>)</a></li>
     </ul>
   </div>
