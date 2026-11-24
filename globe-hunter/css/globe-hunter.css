@@ -439,23 +439,6 @@ body[data-p="globe"] {
   cursor: grabbing;
 }
 
-/* Subtle Coordinates HUD Pill */
-.gh-hud-coords-badge {
-  position: absolute;
-  bottom: 18px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--gh-border);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-family: monospace;
-  color: var(--gh-primary);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  pointer-events: none;
-}
-
 .gh-hud-hint {
   position: absolute;
   top: 18px;
