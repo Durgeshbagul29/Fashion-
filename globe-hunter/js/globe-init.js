@@ -326,9 +326,9 @@ window.GH_GLOBE = {
     this.pinGroup = new THREE.Group();
     this.earthMesh.add(this.pinGroup);
 
-    // Initial default orientation facing India & show initial location pin
+    // Initial default orientation facing India (no pin shown beforehand in Lucky Spin)
     this.orientToLatLng(20.59, 78.96);
-    this.showLocationPin(20.59, 78.96);
+    this.clearLocationPin();
 
     // Animation Loop
     this.animate();
@@ -431,6 +431,7 @@ window.GH_GLOBE = {
   },
 
   startFastSpin() {
+    this.clearLocationPin();
     this.isSpinning = true;
     this.spinSpeed = 0.075;
   },
@@ -447,6 +448,9 @@ window.GH_GLOBE = {
         if (targetCountry) {
           this.spinToCountry(targetCountry, () => {
             this.showLocationPin(targetCountry.lat, targetCountry.lng);
+            if (typeof window.onGlobeRotated === 'function') {
+              window.onGlobeRotated({ lat: targetCountry.lat, lng: targetCountry.lng });
+            }
             if (onComplete) onComplete();
           });
         } else if (onComplete) {

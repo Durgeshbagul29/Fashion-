@@ -174,14 +174,19 @@ window.GH_ENGINE = {
     this.state.bannerState = 'IN_PROGRESS';
     this.updateActiveRewardBanner();
 
-    // Smoothly pan globe and show active location pin
+    // In Explore mode, smoothly pan globe and show active location pin
+    // In Lucky Spin mode, do not show pin beforehand until Earth stops moving
     if (window.GH_GLOBE && country) {
-      window.GH_GLOBE.spinToCountry(country, () => {
-        window.GH_GLOBE.showLocationPin(country.lat, country.lng);
-        if (typeof window.onGlobeRotated === 'function') {
-          window.onGlobeRotated({ lat: country.lat, lng: country.lng });
-        }
-      });
+      if (this.state.mode === 'explore') {
+        window.GH_GLOBE.spinToCountry(country, () => {
+          window.GH_GLOBE.showLocationPin(country.lat, country.lng);
+          if (typeof window.onGlobeRotated === 'function') {
+            window.onGlobeRotated({ lat: country.lat, lng: country.lng });
+          }
+        });
+      } else {
+        window.GH_GLOBE.clearLocationPin();
+      }
     }
 
     const badge = document.getElementById('gh-selected-badge');
@@ -216,6 +221,17 @@ window.GH_ENGINE = {
 
   switchMode(mode) {
     this.state.mode = mode;
+    this.resetGame();
+
+    if (window.GH_GLOBE) {
+      if (mode === 'lucky') {
+        window.GH_GLOBE.clearLocationPin();
+      } else {
+        const center = window.GH_GLOBE.getCurrentCenterCoords();
+        window.GH_GLOBE.showLocationPin(center.lat, center.lng);
+      }
+    }
+
     const luckyBtn = document.getElementById('gh-mode-lucky');
     const exploreBtn = document.getElementById('gh-mode-explore');
     const luckyControls = document.getElementById('gh-controls-lucky');
@@ -242,6 +258,10 @@ window.GH_ENGINE = {
     if (!this.state.guessCountry) {
       alert('Please select your guessed country first!');
       return;
+    }
+
+    if (window.GH_GLOBE) {
+      window.GH_GLOBE.clearLocationPin();
     }
 
     this.state.isPlaying = true;

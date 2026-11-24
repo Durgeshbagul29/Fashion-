@@ -91,6 +91,11 @@ window.GH_CONTROLS = {
     this.isDragging = false;
 
     // If user clicked without dragging, perform raycast to set pin directly at clicked point
+    // In Lucky Spin mode, do not place pin on manual click
+    if (window.GH_ENGINE && window.GH_ENGINE.state.mode === 'lucky') {
+      return;
+    }
+
     if (!this.hasMoved && e && containerEl && window.GH_GLOBE.camera && window.GH_GLOBE.earthMesh) {
       const rect = containerEl.getBoundingClientRect();
       const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
